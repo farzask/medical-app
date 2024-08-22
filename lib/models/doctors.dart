@@ -8,6 +8,7 @@ class DoctorsModel {
   Gradient color;
   String biography;
   List<CalendarModel> calendar;
+  List<TimeModel> time;
 
   DoctorsModel({
     required this.imagePath,
@@ -17,6 +18,7 @@ class DoctorsModel {
     required this.color,
     required this.biography,
     required this.calendar,
+    required this.time,
   });
 
   static List<DoctorsModel> getDoctors() {
@@ -44,18 +46,36 @@ class DoctorsModel {
           CalendarModel(
             dayNumber: 14,
             dayName: 'Sun',
+            isSelected: true,
           ),
           CalendarModel(
             dayNumber: 15,
             dayName: 'Mon',
+            isSelected: false,
           ),
           CalendarModel(
             dayNumber: 16,
             dayName: 'Tue',
+            isSelected: false,
           ),
           CalendarModel(
             dayNumber: 17,
             dayName: 'Wed',
+            isSelected: false,
+          ),
+        ],
+        time: [
+          TimeModel(
+            time: '09.00 AM',
+            isSelected: true,
+          ),
+          TimeModel(
+            time: '11.00 AM',
+            isSelected: false,
+          ),
+          TimeModel(
+            time: '03.00 PM',
+            isSelected: false,
           ),
         ],
       ),
@@ -83,18 +103,36 @@ class DoctorsModel {
           CalendarModel(
             dayNumber: 14,
             dayName: 'Sun',
+            isSelected: true,
           ),
           CalendarModel(
             dayNumber: 15,
             dayName: 'Mon',
+            isSelected: false,
           ),
           CalendarModel(
             dayNumber: 16,
             dayName: 'Tue',
+            isSelected: false,
           ),
           CalendarModel(
             dayNumber: 17,
             dayName: 'Wed',
+            isSelected: false,
+          ),
+        ],
+        time: [
+          TimeModel(
+            time: '09.00 AM',
+            isSelected: true,
+          ),
+          TimeModel(
+            time: '11.00 AM',
+            isSelected: false,
+          ),
+          TimeModel(
+            time: '03.00 PM',
+            isSelected: false,
           ),
         ],
       ),
@@ -106,9 +144,19 @@ class DoctorsModel {
 class CalendarModel {
   int dayNumber;
   String dayName;
+  bool isSelected;
+  CalendarModel(
+      {required this.dayNumber,
+      required this.dayName,
+      required this.isSelected});
+}
 
-  CalendarModel({
-    required this.dayNumber,
-    required this.dayName,
+class TimeModel {
+  String time;
+  bool isSelected;
+
+  TimeModel({
+    required this.time,
+    required this.isSelected,
   });
 }
