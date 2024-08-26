@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class DoctorsModel {
+class DentistsModel {
   String imagePath;
   String name;
   List<String> specialization;
@@ -10,7 +10,7 @@ class DoctorsModel {
   List<CalendarModel> calendar;
   List<TimeModel> time;
 
-  DoctorsModel({
+  DentistsModel({
     required this.imagePath,
     required this.name,
     required this.specialization,
@@ -21,11 +21,11 @@ class DoctorsModel {
     required this.time,
   });
 
-  static List<DoctorsModel> getDoctors() {
-    List<DoctorsModel> doctors = [];
+  static List<DentistsModel> getDentists() {
+    List<DentistsModel> dentists = [];
 
-    doctors.add(
-      DoctorsModel(
+    dentists.add(
+      DentistsModel(
         imagePath: 'assets/images/jenny.png',
         name: 'Dr. Jenny Wilson',
         specialization: [
@@ -41,7 +41,7 @@ class DoctorsModel {
           ],
         ),
         biography:
-            'Dr. Jenny Wilson (Implantologist),  is a Dentist in \nAmerica, she has 20 years of experience.',
+            'Dr. Jenny Wilson (Implantologist),  is a Dentist in America, she has 20 years of experience.',
         calendar: [
           CalendarModel(
             dayNumber: 14,
@@ -81,8 +81,8 @@ class DoctorsModel {
       ),
     );
 
-    doctors.add(
-      DoctorsModel(
+    dentists.add(
+      DentistsModel(
         imagePath: 'assets/images/kristin.png',
         name: 'Dr. Kristin Watson',
         specialization: [
@@ -98,7 +98,7 @@ class DoctorsModel {
           ],
         ),
         biography:
-            'Dr. Kristin Watson (Implantologist),  is a Dentist in \nAmerica, she has 15 years of experience.',
+            'Dr. Kristin Watson (Implantologist),  is a Dentist in America, she has 15 years of experience.',
         calendar: [
           CalendarModel(
             dayNumber: 14,
@@ -137,7 +137,64 @@ class DoctorsModel {
         ],
       ),
     );
-    return doctors;
+
+    dentists.add(
+      DentistsModel(
+        imagePath: 'assets/images/daniel.png',
+        name: 'Dr. Daniel Crowe',
+        specialization: [
+          'Cosmetic Dentistry',
+          'Endodontics',
+          'Pediatric Dentistry'
+        ],
+        rating: 4.9,
+        color: const RadialGradient(
+          colors: [
+            Color.fromARGB(255, 247, 205, 160),
+            Color(0xffFFF2E4),
+          ],
+        ),
+        biography:
+            'Dr. Crowe is a skilled dentist who excels in cosmetic procedures, root canals, and children’s dentistry. He is known for his gentle approach and commitment to dental health education.',
+        calendar: [
+          CalendarModel(
+            dayNumber: 14,
+            dayName: 'Sun',
+            isSelected: true,
+          ),
+          CalendarModel(
+            dayNumber: 15,
+            dayName: 'Mon',
+            isSelected: false,
+          ),
+          CalendarModel(
+            dayNumber: 16,
+            dayName: 'Tue',
+            isSelected: false,
+          ),
+          CalendarModel(
+            dayNumber: 17,
+            dayName: 'Wed',
+            isSelected: false,
+          ),
+        ],
+        time: [
+          TimeModel(
+            time: '09.00 AM',
+            isSelected: true,
+          ),
+          TimeModel(
+            time: '11.00 AM',
+            isSelected: false,
+          ),
+          TimeModel(
+            time: '03.00 PM',
+            isSelected: false,
+          ),
+        ],
+      ),
+    );
+    return dentists;
   }
 }
 

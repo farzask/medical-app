@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   List<CategoryModel> categories = CategoryModel.getCategories();
-  List<DoctorsModel> doctors = DoctorsModel.getDoctors();
+  List<DentistsModel> dentists = DentistsModel.getDentists();
 
   int _selectedIndex = 0;
 
@@ -36,7 +36,7 @@ class HomePageState extends State<HomePage> {
             children: [
               head(),
               getcategories(),
-              getdoctors(),
+              getDentists(),
             ],
           ),
         ],
@@ -86,13 +86,13 @@ class HomePageState extends State<HomePage> {
     );
   }
 
-  Widget getdoctors() {
+  Widget getDentists() {
     return ListView.separated(
       shrinkWrap: true,
       separatorBuilder: (context, index) => const SizedBox(
         height: 20,
       ),
-      itemCount: doctors.length,
+      itemCount: dentists.length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
@@ -100,7 +100,7 @@ class HomePageState extends State<HomePage> {
               context,
               MaterialPageRoute(
                 builder: (context) => DetailsPage(
-                  doctorModel: doctors[index],
+                  dentistsModel: dentists[index],
                 ),
               ),
             );
@@ -115,9 +115,9 @@ class HomePageState extends State<HomePage> {
                   width: 94,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    gradient: doctors[index].color,
+                    gradient: dentists[index].color,
                     image: DecorationImage(
-                      image: AssetImage(doctors[index].imagePath),
+                      image: AssetImage(dentists[index].imagePath),
                       alignment: Alignment.bottomCenter,
                     ),
                   ),
@@ -133,14 +133,14 @@ class HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      doctors[index].name,
+                      dentists[index].name,
                       style: const TextStyle(
                           fontFamily: 'SFProDisplay',
                           fontSize: 16,
                           fontWeight: FontWeight.w500),
                     ),
                     Text(
-                      doctors[index].specialization.first,
+                      dentists[index].specialization.first,
                       style: TextStyle(
                           fontSize: 12,
                           fontFamily: 'Roboto',
@@ -158,7 +158,7 @@ class HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            doctors[index].rating.toString(),
+                            dentists[index].rating.toString(),
                             style: TextStyle(
                                 fontSize: 12,
                                 fontFamily: 'Roboto',

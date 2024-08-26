@@ -75,6 +75,16 @@ flutter:
    - assets/icons/Home.svg
    - assets/icons/Profile.svg
    - assets/icons/Arrow - Left.svg
+   - assets/images/Jonathan.png
+   - assets/images/lila.png
+   - assets/images/maria.png
+   - assets/images/priya.png
+   - assets/images/sameul.png
+   - assets/images/sarah.png
+   - assets/images/evelyn.png
+   - assets/images/daniel.png
+   - assets/images/clara.png
+   - assets/images/alexendar.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
