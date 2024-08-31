@@ -39,7 +39,7 @@ class _DetailsState extends State<DetailsPage> {
               children: [
                 info(),
                 const SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 booking(),
                 const SizedBox(
@@ -50,6 +50,9 @@ class _DetailsState extends State<DetailsPage> {
                   height: 30,
                 ),
                 button(),
+                const SizedBox(
+                  height: 20,
+                ),
               ],
             ),
           ),
@@ -355,7 +358,7 @@ class _DetailsState extends State<DetailsPage> {
                 ),
                 itemCount: widget.doctorsModel.specialization.length,
               ),
-            )
+            ),
           ],
         ),
       ],

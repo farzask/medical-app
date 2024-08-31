@@ -13,14 +13,15 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   List<CategoryModel> categories = CategoryModel.getCategories();
-  // List<DoctorModel> dentists = DoctorModel.getDentists();
 
   Map<String, List<DoctorModel>> doctorsByCategories = {
-    'Dentists': DoctorModel.getDentists(),
     'Cardiologists': DoctorModel.getCardiologists(),
+    'Dentists': DoctorModel.getDentists(),
+    'General': DoctorModel.getPhysicians(),
+    'Gynaecologists': DoctorModel.getGynecologists(),
   };
 
-  String _selectedCategory = 'Dentists';
+  String _selectedCategory = 'Cardiologists';
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -35,6 +36,10 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: const Color(0xff51A8FF),
+        toolbarHeight: 6,
+      ),
       body: ListView(
         children: [
           Column(
@@ -258,13 +263,16 @@ class HomePageState extends State<HomePage> {
   Container head() {
     return Container(
       color: const Color(0xff51A8FF),
-      height: 300,
+      height: 260,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+            padding: const EdgeInsets.only(
+              left: 20,
+              right: 20,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -298,7 +306,7 @@ class HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 const Text(
                   'Let\'s find\nyour top doctor',
                   style: TextStyle(

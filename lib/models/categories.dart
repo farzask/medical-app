@@ -15,19 +15,22 @@ class CategoryModel {
     categories.add(
       CategoryModel(
           iconPath: 'assets/icons/heart.svg',
-          isSelected: false,
+          isSelected: true,
           name: 'Cardiologists'),
     );
 
     categories.add(
       CategoryModel(
-          iconPath: 'assets/icons/pil.svg', isSelected: false, name: 'General'),
+        iconPath: 'assets/icons/pil.svg',
+        isSelected: false,
+        name: 'General',
+      ),
     );
 
     categories.add(
       CategoryModel(
           iconPath: 'assets/icons/dentist.svg',
-          isSelected: true,
+          isSelected: false,
           name: 'Dentists'),
     );
 
