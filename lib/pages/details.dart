@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DetailsPage extends StatefulWidget {
-  final DentistsModel dentistsModel;
+  final DoctorModel doctorsModel;
   const DetailsPage({
-    required this.dentistsModel,
+    required this.doctorsModel,
     super.key,
   });
 
@@ -20,8 +20,8 @@ class _DetailsState extends State<DetailsPage> {
   @override
   void initState() {
     super.initState();
-    calendar = widget.dentistsModel.calendar;
-    time = widget.dentistsModel.time;
+    calendar = widget.doctorsModel.calendar;
+    time = widget.doctorsModel.time;
   }
 
   @override
@@ -242,9 +242,9 @@ class _DetailsState extends State<DetailsPage> {
               width: 94,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                gradient: widget.dentistsModel.color,
+                gradient: widget.doctorsModel.color,
                 image: DecorationImage(
-                  image: AssetImage(widget.dentistsModel.imagePath),
+                  image: AssetImage(widget.doctorsModel.imagePath),
                   alignment: Alignment.bottomCenter,
                 ),
               ),
@@ -259,14 +259,14 @@ class _DetailsState extends State<DetailsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.dentistsModel.name,
+                    widget.doctorsModel.name,
                     style: const TextStyle(
                         fontFamily: 'SFProDisplay',
                         fontSize: 16,
                         fontWeight: FontWeight.w500),
                   ),
                   Text(
-                    widget.dentistsModel.specialization.first,
+                    widget.doctorsModel.specialization.first,
                     style: TextStyle(
                         fontSize: 12,
                         fontFamily: 'Roboto',
@@ -284,7 +284,7 @@ class _DetailsState extends State<DetailsPage> {
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Text(
-                          widget.dentistsModel.rating.toString(),
+                          widget.doctorsModel.rating.toString(),
                           style: TextStyle(
                               fontSize: 12,
                               fontFamily: 'Roboto',
@@ -314,7 +314,7 @@ class _DetailsState extends State<DetailsPage> {
               ),
             ),
             Text(
-              widget.dentistsModel.biography,
+              widget.doctorsModel.biography,
               style: TextStyle(
                   fontSize: 13,
                   fontFamily: 'Roboto',
@@ -341,7 +341,7 @@ class _DetailsState extends State<DetailsPage> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return Text(
-                    widget.dentistsModel.specialization[index],
+                    widget.doctorsModel.specialization[index],
                     style: TextStyle(
                         fontSize: 13,
                         fontFamily: 'Roboto',
@@ -353,7 +353,7 @@ class _DetailsState extends State<DetailsPage> {
                 separatorBuilder: (context, index) => const SizedBox(
                   width: 15,
                 ),
-                itemCount: widget.dentistsModel.specialization.length,
+                itemCount: widget.doctorsModel.specialization.length,
               ),
             )
           ],

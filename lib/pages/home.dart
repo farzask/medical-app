@@ -13,8 +13,14 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   List<CategoryModel> categories = CategoryModel.getCategories();
-  List<DentistsModel> dentists = DentistsModel.getDentists();
+  // List<DoctorModel> dentists = DoctorModel.getDentists();
 
+  Map<String, List<DoctorModel>> doctorsByCategories = {
+    'Dentists': DoctorModel.getDentists(),
+    'Cardiologists': DoctorModel.getCardiologists(),
+  };
+
+  String _selectedCategory = 'Dentists';
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -36,63 +42,23 @@ class HomePageState extends State<HomePage> {
             children: [
               head(),
               getcategories(),
-              getDentists(),
+              getDoctors(),
             ],
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/Home.svg',
-              height: 20,
-              color: _selectedIndex == 0 ? Colors.blue : Colors.grey,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/Calendar.svg',
-              height: 20,
-              color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/Chat.svg',
-              height: 20,
-              color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/Profile.svg',
-              height: 20,
-              color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
-            ),
-            label: '',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-      ),
+      bottomNavigationBar: bottomNav(),
     );
   }
 
-  Widget getDentists() {
+  Widget getDoctors() {
+    List<DoctorModel> doctors = doctorsByCategories[_selectedCategory]!;
     return ListView.separated(
       shrinkWrap: true,
       separatorBuilder: (context, index) => const SizedBox(
         height: 20,
       ),
-      itemCount: dentists.length,
+      itemCount: doctors.length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
@@ -100,7 +66,7 @@ class HomePageState extends State<HomePage> {
               context,
               MaterialPageRoute(
                 builder: (context) => DetailsPage(
-                  dentistsModel: dentists[index],
+                  doctorsModel: doctors[index],
                 ),
               ),
             );
@@ -115,9 +81,9 @@ class HomePageState extends State<HomePage> {
                   width: 94,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    gradient: dentists[index].color,
+                    gradient: doctors[index].color,
                     image: DecorationImage(
-                      image: AssetImage(dentists[index].imagePath),
+                      image: AssetImage(doctors[index].imagePath),
                       alignment: Alignment.bottomCenter,
                     ),
                   ),
@@ -133,14 +99,14 @@ class HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      dentists[index].name,
+                      doctors[index].name,
                       style: const TextStyle(
                           fontFamily: 'SFProDisplay',
                           fontSize: 16,
                           fontWeight: FontWeight.w500),
                     ),
                     Text(
-                      dentists[index].specialization.first,
+                      doctors[index].specialization.first,
                       style: TextStyle(
                           fontSize: 12,
                           fontFamily: 'Roboto',
@@ -158,7 +124,7 @@ class HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            dentists[index].rating.toString(),
+                            doctors[index].rating.toString(),
                             style: TextStyle(
                                 fontSize: 12,
                                 fontFamily: 'Roboto',
@@ -203,6 +169,7 @@ class HomePageState extends State<HomePage> {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
+                  _selectedCategory = categories[index].name;
                   for (var item in categories) {
                     item.isSelected = false;
                   }
@@ -240,6 +207,51 @@ class HomePageState extends State<HomePage> {
           ),
         ),
       ],
+    );
+  }
+
+  BottomNavigationBar bottomNav() {
+    return BottomNavigationBar(
+      backgroundColor: Colors.white,
+      items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            'assets/icons/Home.svg',
+            height: 20,
+            color: _selectedIndex == 0 ? Colors.blue : Colors.grey,
+          ),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            'assets/icons/Calendar.svg',
+            height: 20,
+            color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
+          ),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            'assets/icons/Chat.svg',
+            height: 20,
+            color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
+          ),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            'assets/icons/Profile.svg',
+            height: 20,
+            color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
+          ),
+          label: '',
+        ),
+      ],
+      currentIndex: _selectedIndex,
+      selectedItemColor: Colors.blue,
+      onTap: _onItemTapped,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
     );
   }
 
